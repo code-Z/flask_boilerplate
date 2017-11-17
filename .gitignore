@@ -1,0 +1,10 @@
+.vscode
+.idea
+
+venv
+logs
+__pycache__
+
+*.log
+*.db
+*.pyc
