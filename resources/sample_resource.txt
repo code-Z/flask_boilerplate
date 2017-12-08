@@ -1,0 +1,2 @@
+all resources specific to this project like csv files, xml files, excel sheets
+go in this directory

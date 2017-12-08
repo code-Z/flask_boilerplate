@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Sample deploy script.
+# Make sure to change the project specific variables
+
+USERNAME=ubuntu
+HOST="test_server"
+BRANCH="develop"
+SCRIPT="printf '\n[*]Logged in.\n'; \
+        cd src/activity_service; \
+        printf '\n[*] Preparing to pull code from remote branch ${BRANCH}\n'; \
+        git pull origin ${BRANCH}; \
+        printf '\n[*] Code pulled successfully. Activating virtual env.\n'; \
+        source venv/bin/activate; \
+        printf '\n[*] Installing requirements...\n'; \
+        pip install -r requirements.txt; \
+        printf '\n[*] Installation done. Running migrations...\n'; \
+        ./db_migrate.py db upgrade; \
+        deactivate; \
+        printf '\n[*] Restarting activity service daemon.\n'; \
+        sudo restart activity; \
+        printf '\n[*] Checking activity service status.\n'; \
+        sudo status activity;"
+
+printf "[*] Logging into the remote server...\n"
+ssh -l ${USERNAME} ${HOST} "${SCRIPT}"
+printf "\n[*] App deployed successfully\n"

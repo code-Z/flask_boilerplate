@@ -1,0 +1,13 @@
+Flask
+requests
+uwsgi
+python-firebase
+flask-sqlalchemy
+sqlalchemy-migrate
+flask-whooshalchemy
+mysqlclient
+flask-cors
+flask-migrate
+flask-script
+flask-admin
+openpyxl
